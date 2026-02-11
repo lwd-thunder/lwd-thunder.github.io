@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: url('image/朱老师.jpg') center/cover;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.2) rotate(2deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 4px solid rgba(255, 255, 255, 1);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        h1:hover {
+            transform: rotate(360deg);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('image/003.jpg') center/contain no-repeat;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .about-section h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            text-align: justify;
+        }
+
+        .hobbies-section {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hobbies-section h2 {
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .hobby-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .hobby-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hobby-card h3 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .hobby-card p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .about-section {
+                padding: 25px;
+            }
+            
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar"></div>
+            <h1>欢迎来到我的个人主页</h1>
+            <p class="subtitle">探索科技与生活的完美融合，在数字世界中寻找无限可能</p>
+        </header>
+
+        <section class="about-section">
+            <h2>🌟 关于我</h2>
+            <p>
+                我是一个对世界充满好奇心的探索者，热衷于在科技的前沿领域寻找突破与创新。
+                在人工智能的浪潮中，我不断学习最新的算法与技术，期待用智能解决方案改变世界。
+                同时，我也深知身体与心灵平衡的重要性，通过运动保持活力，通过阅读拓展视野，
+                通过游戏释放压力。我相信，只有全面发展，才能在人生的道路上走得更远、更精彩。
+            </p>
+        </section>
+
+        <section class="hobbies-section">
+            <h2>✨ 个人爱好</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <span class="hobby-icon">🤖</span>
+                    <h3>人工智能</h3>
+                    <p>探索机器学习与深度学习的奥秘，致力于用智能技术创造更美好的未来，让AI服务于人类生活。</p>
+                </div>
+                
+                <div class="hobby-card">
+                    <span class="hobby-icon">🏃</span>
+                    <h3>运动健身</h3>
+                    <p>享受运动带来的多巴胺，在跑步、健身中挑战自我极限，保持身心健康，以最佳状态迎接每一天。</p>
+                </div>
+                
+                <div class="hobby-card">
+                    <span class="hobby-icon">📚</span>
+                    <h3>阅读思考</h3>
+                    <p>沉浸在知识的海洋中，通过阅读经典著作与前沿资讯，不断充实自我，培养独立思考的能力。</p>
+                </div>
+                
+                <div class="hobby-card">
+                    <span class="hobby-icon">🎮</span>
+                    <h3>游戏娱乐</h3>
+                    <p>在虚拟世界中体验不同的人生，享受游戏带来的乐趣与挑战，在放松中激发创造力与想象力。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2024 个人主页 | 用热爱点亮生活 ✨</p>
+        </footer>
+    </div>
+</body>
+</html>
